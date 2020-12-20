@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="984dbd84-fdfa-44f7-8dc8-69813716d0d9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lvFciw6bHcbyjDJtaNbMjmw8rG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="984dbd84-fdfa-44f7-8dc8-69813716d0d9" name="Default Changelist" comment="" />
+      <created>1608469738368</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608469738368</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1878" height="197" key="GridCell.Tab.0.bottom" timestamp="1608477967091">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.0.bottom/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475160977" />
+    <state width="1878" height="197" key="GridCell.Tab.0.bottom/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967090" />
+    <state width="1878" height="197" key="GridCell.Tab.0.center" timestamp="1608477967089">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.0.center/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475160976" />
+    <state width="1878" height="197" key="GridCell.Tab.0.center/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967089" />
+    <state width="1878" height="197" key="GridCell.Tab.0.left" timestamp="1608477967088">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.0.left/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475160975" />
+    <state width="1878" height="197" key="GridCell.Tab.0.left/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967088" />
+    <state width="1878" height="197" key="GridCell.Tab.0.right" timestamp="1608477967089">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.0.right/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475160976" />
+    <state width="1878" height="197" key="GridCell.Tab.0.right/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967089" />
+    <state width="1878" height="197" key="GridCell.Tab.1.bottom" timestamp="1608477967002">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.1.bottom/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475230728" />
+    <state width="1878" height="197" key="GridCell.Tab.1.bottom/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967002" />
+    <state width="1878" height="197" key="GridCell.Tab.1.center" timestamp="1608477967002">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.1.center/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475230723" />
+    <state width="1878" height="197" key="GridCell.Tab.1.center/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967002" />
+    <state width="1878" height="197" key="GridCell.Tab.1.left" timestamp="1608477967001">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.1.left/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475230712" />
+    <state width="1878" height="197" key="GridCell.Tab.1.left/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967001" />
+    <state width="1878" height="197" key="GridCell.Tab.1.right" timestamp="1608477967002">
+      <screen x="725" y="-1055" width="1920" height="1011" />
+    </state>
+    <state width="1878" height="330" key="GridCell.Tab.1.right/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608475230728" />
+    <state width="1878" height="197" key="GridCell.Tab.1.right/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608477967002" />
+    <state x="1208" y="-877" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1608474865135">
+      <screen x="725" y="-1055" width="1920" height="1055" />
+    </state>
+    <state x="1208" y="-877" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608474865135" />
+    <state x="1350" y="-821" width="670" height="676" key="search.everywhere.popup" timestamp="1608473581893">
+      <screen x="725" y="-1055" width="1920" height="1055" />
+    </state>
+    <state x="1350" y="-821" width="670" height="676" key="search.everywhere.popup/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608473581893" />
+  </component>
+</project>
