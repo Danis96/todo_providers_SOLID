@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/app/utils/navigation_animations.dart';
+import 'package:todo/app/view/home/page/home.dart';
 import 'package:todo/app/view/login/page/login_page.dart';
 import 'package:todo/app/view/registration/page/register_page.dart';
 import 'package:todo/routing/routes.dart';
@@ -15,6 +16,8 @@ class RouteGenerator {
         return SlideAnimationTween(widget: LoginPage());
       case SignUp:
         return SlideAnimationTween(widget: RegistrationPage());
+        case Home:
+        return SlideAnimationTween(widget: HomePage());
       default:
         return _errorRoute();
     }

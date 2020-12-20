@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       Container(
+                        margin: const EdgeInsets.only(top: 10),
                         child: passwordTextFormField(
                           controller: _passwordController,
                         ),
@@ -54,11 +55,21 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 margin: const EdgeInsets.only(top: 80),
                 child: loginButton(
-                  onPressed: () => _authProvider.loginUser(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                    key: _loginFormKey,
-                  ),
+                  onPressed: () => _authProvider
+                      .loginUser(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        key: _loginFormKey,
+                      )
+                      .then(
+                        (_) => print('User is logged in'),
+                      )
+                      .then(
+                        (_) => Navigator.of(context).pushNamedAndRemoveUntil(
+                          Home,
+                          (_) => false,
+                        ),
+                      ),
                 ),
               ),
               Container(

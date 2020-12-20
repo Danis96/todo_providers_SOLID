@@ -39,11 +39,13 @@ class RegistrationPage extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        margin: const EdgeInsets.only(top: 5),
                         child: passwordRegisterTextFormField(
                           controller: _passwordController,
                         ),
                       ),
                       Container(
+                        margin: const EdgeInsets.only(top: 5),
                         child: confirmPasswordRegisterTextFormField(
                           controller: _passwordConfirmController,
                         ),
@@ -55,11 +57,21 @@ class RegistrationPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 80),
                 child: registerButton(
-                  onPressed: () => _authProvider.registerUser(
-                    email: _emailController.text,
-                    password: _passwordConfirmController.text,
-                    key: _registerFormKey,
-                  ).then((_) => print('User is registered')),
+                  onPressed: () => _authProvider
+                      .registerUser(
+                        email: _emailController.text,
+                        password: _passwordConfirmController.text,
+                        key: _registerFormKey,
+                      )
+                      .then(
+                        (_) => print('User is registered'),
+                      )
+                      .then(
+                        (_) => Navigator.of(context).pushNamedAndRemoveUntil(
+                          Home,
+                          (_) => false,
+                        ),
+                      ),
                   disable: _passwordController.text.isEmpty !=
                       _passwordConfirmController.text.isEmpty,
                 ),

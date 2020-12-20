@@ -12,6 +12,12 @@ Widget commonTextFormField({
     controller: controller,
     obscureText: obscureText,
     cursorColor: ColorHelper.mainPurple.color,
+    validator: (String input) {
+         if(input.isEmpty) {
+           return 'Field cannot be empty!!!';
+         }
+         return '';
+    },
     decoration: InputDecoration(
       helperText: '',
       suffixIcon: icon,
@@ -74,6 +80,14 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       controller: widget.controller,
       obscureText: _showPassword,
       cursorColor: ColorHelper.mainPurple.color,
+      validator: (String input) {
+          if(input.isEmpty) {
+            return 'Field cannot be empty!!!';
+          } else if(input.length < 6) {
+            return 'Password must be longer then 6 characters.';
+          }
+          return '';
+      },
       decoration: InputDecoration(
         helperText: '',
         suffixIcon: IconButton(

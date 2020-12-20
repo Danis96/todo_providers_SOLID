@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:todo/app/utils/color_helper.dart';
+import 'package:todo/common/common_app_bar.dart';
+
+String dateNow() {
+  final DateFormat f = DateFormat('dd MMM');
+  final DateTime now = DateTime.now();
+  final String date = f.format(now);
+  return date;
+}
+
+PreferredSizeWidget homeAppBar() {
+  return commonAppBar(
+    title: dateNow(),
+    backgroundColor: ColorHelper.mainPurple.color,
+    action: IconButton(
+      icon: Icon(
+        Icons.timer,
+        color: ColorHelper.todoWhite.color,
+      ),
+      onPressed: () => print('Navigate to screen to show time that is left'),
+    ),
+    leading: IconButton(
+      icon: Icon(
+        Icons.settings,
+        color: ColorHelper.todoWhite.color,
+      ),
+      onPressed: () => print('Navigate to settings screen for user'),
+    ),
+  );
+}
