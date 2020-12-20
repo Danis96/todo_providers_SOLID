@@ -20,18 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984dbd84-fdfa-44f7-8dc8-69813716d0d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/app/models/user_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/app/view/home/page/home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/app/view/home/widgets/home_app_bar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/common_app_bar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/common_alert_dialog.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/common_loader.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/providers/auth_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/providers/auth_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/repository/authentification_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/repository/authentification_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/view/home/page/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/view/home/page/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/view/home/widgets/home_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/view/home/widgets/home_app_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/view/login/page/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/view/login/page/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/view/registration/page/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/view/registration/page/register_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/common_text_form_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/common_text_form_field.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routing/route_generator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routing/route_generator.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routing/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routing/routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -91,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608478291929</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="registration and login finished, user model created, started home widget, app bar finished">
+      <created>1608500878475</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608500878475</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,53 +115,54 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initialCommit + Authentification" />
     <MESSAGE value="registration and login finished, user model created, started home widget, app bar finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="registration and login finished, user model created, started home widget, app bar finished" />
+    <MESSAGE value="fixed registration, added logout on settings icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed registration, added logout on settings icon" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1878" height="188" key="GridCell.Tab.0.bottom" timestamp="1608500827217">
+    <state width="1878" height="293" key="GridCell.Tab.0.bottom" timestamp="1608502569395">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.0.bottom/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827217" />
+    <state width="1878" height="293" key="GridCell.Tab.0.bottom/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569395" />
     <state width="1878" height="240" key="GridCell.Tab.0.bottom/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349987" />
-    <state width="1878" height="188" key="GridCell.Tab.0.center" timestamp="1608500827216">
+    <state width="1878" height="293" key="GridCell.Tab.0.center" timestamp="1608502569394">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.0.center/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827216" />
+    <state width="1878" height="293" key="GridCell.Tab.0.center/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569394" />
     <state width="1878" height="240" key="GridCell.Tab.0.center/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349986" />
-    <state width="1878" height="188" key="GridCell.Tab.0.left" timestamp="1608500827215">
+    <state width="1878" height="293" key="GridCell.Tab.0.left" timestamp="1608502569393">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.0.left/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827215" />
+    <state width="1878" height="293" key="GridCell.Tab.0.left/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569393" />
     <state width="1878" height="240" key="GridCell.Tab.0.left/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349986" />
-    <state width="1878" height="188" key="GridCell.Tab.0.right" timestamp="1608500827216">
+    <state width="1878" height="293" key="GridCell.Tab.0.right" timestamp="1608502569394">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.0.right/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827216" />
+    <state width="1878" height="293" key="GridCell.Tab.0.right/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569394" />
     <state width="1878" height="240" key="GridCell.Tab.0.right/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349987" />
-    <state width="1878" height="188" key="GridCell.Tab.1.bottom" timestamp="1608500827217">
+    <state width="1878" height="293" key="GridCell.Tab.1.bottom" timestamp="1608502569396">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.1.bottom/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827217" />
+    <state width="1878" height="293" key="GridCell.Tab.1.bottom/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569396" />
     <state width="1878" height="240" key="GridCell.Tab.1.bottom/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349988" />
-    <state width="1878" height="188" key="GridCell.Tab.1.center" timestamp="1608500827217">
+    <state width="1878" height="293" key="GridCell.Tab.1.center" timestamp="1608502569395">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.1.center/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827217" />
+    <state width="1878" height="293" key="GridCell.Tab.1.center/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569395" />
     <state width="1878" height="240" key="GridCell.Tab.1.center/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349988" />
-    <state width="1878" height="188" key="GridCell.Tab.1.left" timestamp="1608500827217">
+    <state width="1878" height="293" key="GridCell.Tab.1.left" timestamp="1608502569395">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.1.left/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827217" />
+    <state width="1878" height="293" key="GridCell.Tab.1.left/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569395" />
     <state width="1878" height="240" key="GridCell.Tab.1.left/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349987" />
-    <state width="1878" height="188" key="GridCell.Tab.1.right" timestamp="1608500827217">
+    <state width="1878" height="293" key="GridCell.Tab.1.right" timestamp="1608502569395">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1878" height="188" key="GridCell.Tab.1.right/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500827217" />
+    <state width="1878" height="293" key="GridCell.Tab.1.right/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608502569395" />
     <state width="1878" height="240" key="GridCell.Tab.1.right/0.25.1440.875/725.-1055.1920.1011/-1195.-1055.1920.1055@725.-1055.1920.1011" timestamp="1608478349988" />
-    <state x="1186" y="-892" key="SettingsEditor" timestamp="1608500479896">
+    <state x="1437" y="-786" key="SettingsEditor" timestamp="1608501083129">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>
-    <state x="1186" y="-892" key="SettingsEditor/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608500479896" />
+    <state x="1437" y="-786" key="SettingsEditor/0.25.1440.831/725.-1055.1920.1055/-1195.-1055.1920.1055@725.-1055.1920.1055" timestamp="1608501083129" />
     <state x="1208" y="-877" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1608474865135">
       <screen x="725" y="-1055" width="1920" height="1055" />
     </state>

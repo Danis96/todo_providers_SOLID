@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-
+  // ignore: missing_return
   Future<UserCredential> signIn(
       String email, String pass, GlobalKey<FormState> key) async {
     final FormState _formState = key.currentState;
@@ -21,6 +21,7 @@ class AuthRepository {
     }
   }
 
+  // ignore: missing_return
   Future<UserCredential> signUp(
       String email, String pass, GlobalKey<FormState> key) async {
     final FormState _formState = key.currentState;
@@ -36,5 +37,9 @@ class AuthRepository {
         print(e);
       }
     }
+  }
+
+  Future<void> logout() async {
+    await _auth.signOut();
   }
 }

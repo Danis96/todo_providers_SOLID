@@ -23,8 +23,8 @@ class AuthProvider extends ChangeNotifier {
           await _authRepository.signUp(email, password, key);
       _userModel = UserModel.fromDocument(userCredential);
       print('REGISTER USER:');
-      print('TOKEN: ${userCredential.user.uid}');
-      print('USER: ${userCredential.user.email}');
+      print('TOKEN: ${_userModel.uid}');
+      print('USER: ${_userModel.email}');
       notifyListeners();
       return _userModel;
     } catch (e) {
@@ -43,13 +43,22 @@ class AuthProvider extends ChangeNotifier {
           await _authRepository.signIn(email, password, key);
       _userModel = UserModel.fromDocument(userCredential);
       print('LOGIN USER:');
-      print('TOKEN: ${userCredential.user.uid}');
-      print('USER: ${userCredential.user.email}');
+      print('TOKEN: ${_userModel.uid}');
+      print('USER: ${_userModel.email}');
       notifyListeners();
       return _userModel;
     } catch (e) {
       print(e);
       return null;
+    }
+  }
+
+  Future<void> logoutUser() async {
+    try {
+      await _authRepository.logout();
+      print('User =======> logout');
+    } catch (e) {
+      print(e);
     }
   }
 }

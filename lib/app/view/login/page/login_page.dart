@@ -7,12 +7,7 @@ import 'package:todo/app/view/login/widgets/login_tappable.dart';
 import 'package:todo/app/view/login/widgets/login_text_form_fields.dart';
 import 'package:todo/routing/routes.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
 
   final TextEditingController _passwordController = TextEditingController();

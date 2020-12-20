@@ -16,7 +16,7 @@ Widget commonTextFormField({
          if(input.isEmpty) {
            return 'Field cannot be empty!!!';
          }
-         return '';
+         return null;
     },
     decoration: InputDecoration(
       helperText: '',
@@ -86,7 +86,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
           } else if(input.length < 6) {
             return 'Password must be longer then 6 characters.';
           }
-          return '';
+          return null;
       },
       decoration: InputDecoration(
         helperText: '',

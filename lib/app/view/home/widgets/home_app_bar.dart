@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:todo/app/providers/auth_provider.dart';
 import 'package:todo/app/utils/color_helper.dart';
 import 'package:todo/common/common_app_bar.dart';
+import 'package:todo/routing/routes.dart';
 
 String dateNow() {
   final DateFormat f = DateFormat('dd MMM');
@@ -10,7 +12,8 @@ String dateNow() {
   return date;
 }
 
-PreferredSizeWidget homeAppBar() {
+PreferredSizeWidget homeAppBar(
+    {AuthProvider authProvider, BuildContext context}) {
   return commonAppBar(
     title: dateNow(),
     backgroundColor: ColorHelper.mainPurple.color,
@@ -26,7 +29,10 @@ PreferredSizeWidget homeAppBar() {
         Icons.settings,
         color: ColorHelper.todoWhite.color,
       ),
-      onPressed: () => print('Navigate to settings screen for user'),
+      onPressed: () => authProvider.logoutUser().then(
+            (_) => Navigator.of(context)
+                .pushNamedAndRemoveUntil(SignIn, (_) => false),
+          ),
     ),
   );
 }
