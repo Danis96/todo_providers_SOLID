@@ -2,60 +2,71 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:todo/app/models/user_model.dart';
-import 'package:todo/app/repository/authentification_repository.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider() {
-    _authRepository = AuthRepository();
+    _auth = FirebaseAuth.instance;
   }
 
-  AuthRepository _authRepository;
+  FirebaseAuth _auth;
 
-  UserModel _userModel;
+  UserModel _userModel = UserModel();
+  UserModel get userModel => _userModel;
 
-  Future<UserModel> registerUser({
+  String _loginErrorMsg;
+  String get loginErrorMsg => _loginErrorMsg;
+  String _registerErrorMsg;
+  String get registerErrorMsg => _registerErrorMsg;
+
+  Future<void> registerUser({
     @required String email,
     @required String password,
-    @required GlobalKey<FormState> key,
   }) async {
     try {
+      _registerErrorMsg = null;
       final UserCredential userCredential =
-          await _authRepository.signUp(email, password, key);
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       _userModel = UserModel.fromDocument(userCredential);
       print('REGISTER USER:');
       print('TOKEN: ${_userModel.uid}');
       print('USER: ${_userModel.email}');
       notifyListeners();
-      return _userModel;
     } catch (e) {
       print(e);
-      return null;
+      final List<String> errors = e.toString().split(']');
+      _registerErrorMsg = errors[1];
     }
   }
 
-  Future<UserModel> loginUser({
+  Future<void> loginUser({
     @required String email,
     @required String password,
-    @required GlobalKey<FormState> key,
   }) async {
     try {
+      _loginErrorMsg = null;
       final UserCredential userCredential =
-          await _authRepository.signIn(email, password, key);
+          await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       _userModel = UserModel.fromDocument(userCredential);
       print('LOGIN USER:');
       print('TOKEN: ${_userModel.uid}');
       print('USER: ${_userModel.email}');
       notifyListeners();
-      return _userModel;
     } catch (e) {
       print(e);
-      return null;
+      final List<String> errors = e.toString().split(']');
+      _loginErrorMsg = errors[1];
     }
   }
 
   Future<void> logoutUser() async {
     try {
-      await _authRepository.logout();
+      await _auth.signOut();
       print('User =======> logout');
     } catch (e) {
       print(e);

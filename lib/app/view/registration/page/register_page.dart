@@ -5,6 +5,8 @@ import 'package:todo/app/view/registration/widgets/register_button.dart';
 import 'package:todo/app/view/registration/widgets/register_logo_headline.dart';
 import 'package:todo/app/view/registration/widgets/register_tappable.dart';
 import 'package:todo/app/view/registration/widgets/register_text_form_field.dart';
+import 'package:todo/common/common_loader.dart';
+import 'package:todo/common/common_popup_dialog.dart';
 import 'package:todo/routing/routes.dart';
 
 class RegistrationPage extends StatelessWidget {
@@ -57,23 +59,10 @@ class RegistrationPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 80),
                 child: registerButton(
-                  onPressed: () => _authProvider
-                      .registerUser(
-                        email: _emailController.text,
-                        password: _passwordConfirmController.text,
-                        key: _registerFormKey,
-                      )
-                      .then(
-                        (_) => print('User is registered'),
-                      )
-                      .then(
-                        (_) => Navigator.of(context).pushNamedAndRemoveUntil(
-                          Home,
-                          (_) => false,
-                        ),
-                      ),
-                  disable: _passwordController.text.isEmpty !=
-                      _passwordConfirmController.text.isEmpty,
+                  onPressed: () => registerUser(
+                    context: context,
+                    authProvider: _authProvider,
+                  ),
                 ),
               ),
               Container(
@@ -88,5 +77,45 @@ class RegistrationPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// checking local validation
+  /// then send registration request,
+  /// then navigate to home,
+  /// if false local validation show local errors,
+  /// if false registration request show modal with parsed error
+  void registerUser({
+    BuildContext context,
+    AuthProvider authProvider,
+  }) {
+    loaderDialog(context: context);
+    final FormState _formState = _registerFormKey.currentState;
+    if (_formState.validate()) {
+      authProvider
+          .registerUser(
+        email: _emailController.text,
+        password: _passwordConfirmController.text,
+      )
+          .then(
+        (_) {
+          if (authProvider.registerErrorMsg != null) {
+            Navigator.of(context).pop();
+            showCommonDialog(
+              context: context,
+              text: authProvider.registerErrorMsg,
+              onButtonPressed: () => Navigator.of(context).pop(),
+            );
+          } else {
+            Navigator.of(context).pop();
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Home,
+              (_) => false,
+            );
+          }
+        },
+      );
+    } else {
+      Navigator.of(context).pop();
+    }
   }
 }

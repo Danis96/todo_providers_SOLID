@@ -7,6 +7,8 @@ enum ColorHelper {
   lightPurple,
   todoBlack,
   todoWhite,
+  todoGrey,
+  todoGreenChecked,
 }
 
 extension ColorExtension on ColorHelper {
@@ -20,6 +22,10 @@ extension ColorExtension on ColorHelper {
         return const Color.fromRGBO(0, 0, 0, 1);
       case ColorHelper.todoWhite:
         return const Color.fromRGBO(255, 255, 255, 1);
+      case ColorHelper.todoGrey:
+        return const Color.fromRGBO(232, 232, 232, 1);
+      case ColorHelper.todoGreenChecked:
+        return const Color.fromRGBO(30, 130, 76, 1);
     }
     return Colors.white;
   }

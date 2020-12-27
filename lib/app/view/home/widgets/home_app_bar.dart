@@ -17,6 +17,7 @@ PreferredSizeWidget homeAppBar(
   return commonAppBar(
     title: dateNow(),
     backgroundColor: ColorHelper.mainPurple.color,
+    elevation: 0,
     action: IconButton(
       icon: Icon(
         Icons.timer,

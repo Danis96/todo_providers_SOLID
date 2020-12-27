@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/app/providers/auth_provider.dart';
+import 'package:todo/app/providers/tasks_provider.dart';
 import 'package:todo/app/view/login/page/login_page.dart';
 
 import 'routing/route_generator.dart';
@@ -22,8 +23,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<AuthProvider>(
           create: (BuildContext context) => AuthProvider(),
         ),
+        ChangeNotifierProvider<TaskProvider>(
+          create: (BuildContext context) => TaskProvider(),
+        ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.generateRoute,
         title: 'Todo',
         home: LoginPage(),
