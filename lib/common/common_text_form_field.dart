@@ -7,6 +7,8 @@ Widget commonTextFormField({
   Widget icon,
   String hintText,
   Color hintColor,
+  int maxLines = 1,
+  int minLines = 1,
 }) {
   return TextFormField(
     controller: controller,
@@ -18,6 +20,8 @@ Widget commonTextFormField({
          }
          return null;
     },
+    maxLines: maxLines,
+    minLines: minLines,
     decoration: InputDecoration(
       helperText: '',
       suffixIcon: icon,
@@ -196,3 +200,5 @@ class _PasswordConfirmTextFormFieldState extends State<PasswordConfirmTextFormFi
     );
   }
 }
+
+

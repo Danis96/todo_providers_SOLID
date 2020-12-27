@@ -13,6 +13,13 @@ class TaskProvider extends ChangeNotifier {
   List<TaskModel> _finishedTasks = <TaskModel>[];
   List<TaskModel> get finishedTasks => _finishedTasks;
 
+  String _finishTaskError;
+  String get finishTaskError => _finishTaskError;
+  String _addTaskError;
+  String get addTaskError => _addTaskError;
+
+  DateTime dueDate;
+
   /// to change ui state
   void finished({int id}) {
     taskModels[id].isDone = !taskModels[id].isDone;
@@ -29,7 +36,7 @@ class TaskProvider extends ChangeNotifier {
         // ignore: avoid_function_literals_in_foreach_calls
         value.docs.forEach((QueryDocumentSnapshot snap) {
           _taskModels.add(TaskModel.fromDocument(snap.data()));
-          if(snap.data()['is_done'] == true) {
+          if (snap.data()['is_done'] == true) {
             _finishedTasks.add(TaskModel.fromDocument(snap.data()));
           }
         });
@@ -48,6 +55,7 @@ class TaskProvider extends ChangeNotifier {
     @required String taskID,
     @required bool isDone,
   }) async {
+    _finishTaskError = null;
     try {
       isDone = !isDone;
       await firestore.doc(taskID).update(<String, dynamic>{
@@ -60,6 +68,49 @@ class TaskProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       print(e);
+      final List<String> errors = e.toString().split(']');
+      _finishTaskError = errors[1];
     }
+  }
+
+  Future<void> addNewTask({
+    @required String date,
+    @required String title,
+    @required String userID,
+    @required String description,
+  }) async {
+    _addTaskError = null;
+    try {
+      Map<String, dynamic> task = <String, dynamic>{
+        'date': date,
+        'is_done': false,
+        'task_id': '',
+        'title': title,
+        'user_id': userID,
+        'description': description,
+      };
+      print(task);
+      final DocumentReference doc = await firestore.add(task);
+      Map<String, dynamic> taskFinal = <String, dynamic>{
+        'date': date,
+        'is_done': false,
+        'task_id': doc.id,
+        'title': title,
+        'user_id': userID,
+        'description': description,
+      };
+      _taskModels.add(TaskModel.fromDocument(taskFinal));
+      await firestore.doc(doc.id).update(taskFinal);
+      notifyListeners();
+    } catch (e) {
+      print(e);
+      final List<String> errors = e.toString().split(']');
+      _addTaskError = errors[1];
+    }
+  }
+
+  void getLocalDate(DateTime dateFromPicker) {
+    dueDate = dateFromPicker;
+    notifyListeners();
   }
 }

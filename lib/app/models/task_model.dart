@@ -6,6 +6,7 @@ class TaskModel {
     this.dueDate,
     this.userID,
     this.documentReference,
+    this.description,
   });
 
   factory TaskModel.fromDocument(Map<String, dynamic> json) {
@@ -15,6 +16,7 @@ class TaskModel {
       isDone: json['is_done'] as bool ?? false,
       dueDate: json['date'] as String ?? '',
       documentReference: json['task_id'] as String ?? '',
+      description: json['description'] as String ?? '',
     );
   }
 
@@ -23,4 +25,5 @@ class TaskModel {
   bool isDone;
   String dueDate;
   String documentReference;
+  String description;
 }

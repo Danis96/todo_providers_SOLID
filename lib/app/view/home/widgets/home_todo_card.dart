@@ -58,14 +58,23 @@ Widget todoCard({
                     taskProvider.finished(id: id);
                     await taskProvider.fetchTasks();
                     Navigator.of(context).pop();
-                    if (task.isDone) {
+                    if (taskProvider.finishTaskError != null) {
                       showCommonDialog(
                         context: context,
-                        text:
-                            'Congratulations, task is successfully finished!!!',
+                        text: taskProvider.finishTaskError,
                         onButtonPressed: () => Navigator.of(context).pop(),
-                        image: 'assets/success.png',
+                        image: 'assets/error.png',
                       );
+                    } else {
+                      if (task.isDone) {
+                        showCommonDialog(
+                          context: context,
+                          text:
+                              'Congratulations, task is successfully finished!!!',
+                          onButtonPressed: () => Navigator.of(context).pop(),
+                          image: 'assets/success.png',
+                        );
+                      }
                     }
                   });
                 }),
