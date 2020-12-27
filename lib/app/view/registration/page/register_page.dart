@@ -104,6 +104,7 @@ class RegistrationPage extends StatelessWidget {
               context: context,
               text: authProvider.registerErrorMsg,
               onButtonPressed: () => Navigator.of(context).pop(),
+              image: 'assets/error.png',
             );
           } else {
             Navigator.of(context).pop();

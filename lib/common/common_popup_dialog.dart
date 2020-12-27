@@ -3,13 +3,16 @@ import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 import 'package:todo/app/utils/color_helper.dart';
 import 'package:todo/common/common_button.dart';
 
-void showCommonDialog(
-    {@required BuildContext context,
-    String text = '',
-    Function onButtonPressed}) {
+void showCommonDialog({
+  @required BuildContext context,
+  String text = '',
+  @required Function onButtonPressed,
+  @required String image,
+}) {
   slideDialog.showSlideDialog<Widget>(
     context: context,
-    child: dialogVisual(text: text, onButtonPressed: onButtonPressed),
+    child: dialogVisual(
+        text: text, onButtonPressed: onButtonPressed, image: image),
     barrierColor: Colors.white.withOpacity(0.7),
     pillColor: ColorHelper.mainPurple.color,
     backgroundColor: ColorHelper.todoWhite.color,
@@ -19,10 +22,11 @@ void showCommonDialog(
 Widget dialogVisual({
   @required String text,
   @required Function onButtonPressed,
+  @required String image,
 }) {
   return Container(
     height: 400,
-    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    padding:const EdgeInsets.symmetric(horizontal: 24.0),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +34,7 @@ Widget dialogVisual({
         /// image error
         Container(
           child: Image.asset(
-            'assets/error.png',
+            image,
             width: 80,
             height: 80,
           ),

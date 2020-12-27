@@ -10,6 +10,8 @@ class TaskProvider extends ChangeNotifier {
 
   List<TaskModel> _taskModels = <TaskModel>[];
   List<TaskModel> get taskModels => _taskModels;
+  List<TaskModel> _finishedTasks = <TaskModel>[];
+  List<TaskModel> get finishedTasks => _finishedTasks;
 
   /// to change ui state
   void finished({int id}) {
@@ -21,11 +23,15 @@ class TaskProvider extends ChangeNotifier {
   Future<void> fetchTasks() async {
     try {
       _taskModels = <TaskModel>[];
+      _finishedTasks = <TaskModel>[];
 
       await firestore.get().then((QuerySnapshot value) {
         // ignore: avoid_function_literals_in_foreach_calls
         value.docs.forEach((QueryDocumentSnapshot snap) {
           _taskModels.add(TaskModel.fromDocument(snap.data()));
+          if(snap.data()['is_done'] == true) {
+            _finishedTasks.add(TaskModel.fromDocument(snap.data()));
+          }
         });
       });
       notifyListeners();

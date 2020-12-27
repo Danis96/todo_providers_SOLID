@@ -5,10 +5,13 @@ import 'package:todo/app/models/user_model.dart';
 import 'package:todo/app/providers/auth_provider.dart';
 import 'package:todo/app/providers/tasks_provider.dart';
 import 'package:todo/app/view/home/widgets/home_app_bar.dart';
+import 'package:todo/app/view/home/widgets/home_buttons.dart';
+import 'package:todo/app/view/home/widgets/home_empty_state.dart';
 import 'package:todo/app/view/home/widgets/home_todo_card.dart';
 import 'package:todo/app/view/home/widgets/home_todo_section.dart';
-import 'package:todo/app/view/home/widgets/home_under_app_bar_container.dart';
+import 'package:todo/common/common_empty_container.dart';
 import 'package:todo/common/common_loader.dart';
+import 'package:todo/routing/routes.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -43,6 +46,9 @@ class _HomePageState extends State<HomePage> {
         Provider.of<AuthProvider>(context, listen: true).userModel;
 
     return Scaffold(
+      bottomNavigationBar: addTaskButton(
+        onPressed: () => Navigator.of(context).pushNamed(AddNewTask),
+      ),
       appBar: homeAppBar(
         context: context,
         authProvider: authProvider,
@@ -51,23 +57,31 @@ class _HomePageState extends State<HomePage> {
         onWillPop: () => null,
         child: ListView(
           children: <Widget>[
-            homeUnderAppBarContainer(),
-            thingsToDoSection(numberOfThingsTodo: tasks.length),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: tasks.length,
-              itemBuilder: (BuildContext context, int i) {
-                final TaskModel task = tasks[i];
-                return todoCard(
-                  task: task,
-                  taskProvider: taskProvider,
-                  user: userModel,
-                  context: context,
-                  id: i,
-                );
-              },
-            ),
+            thingsToDoSection(
+                numberOfThingsTodo:
+                    tasks.length - taskProvider.finishedTasks.length),
+            if (tasks != null || tasks.isNotEmpty)
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: tasks.length,
+                itemBuilder: (BuildContext context, int i) {
+                  final TaskModel task = tasks[i];
+                  if (task.userID == userModel.uid) {
+                    return todoCard(
+                      task: task,
+                      taskProvider: taskProvider,
+                      user: userModel,
+                      context: context,
+                      id: i,
+                    );
+                  } else {
+                    return commonEmptyContainer();
+                  }
+                },
+              )
+            else
+              emptyStateForTasks(),
           ],
         ),
       ),

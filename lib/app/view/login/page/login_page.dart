@@ -101,6 +101,7 @@ class LoginPage extends StatelessWidget {
               context: context,
               text: authProvider.loginErrorMsg,
               onButtonPressed: () => Navigator.of(context).pop(),
+              image: 'assets/error.png',
             );
           } else {
             Navigator.of(context).pop();

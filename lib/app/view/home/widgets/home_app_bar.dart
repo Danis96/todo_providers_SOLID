@@ -20,7 +20,7 @@ PreferredSizeWidget homeAppBar(
     elevation: 0,
     action: IconButton(
       icon: Icon(
-        Icons.timer,
+        Icons.check,
         color: ColorHelper.todoWhite.color,
       ),
       onPressed: () => print('Navigate to screen to show time that is left'),

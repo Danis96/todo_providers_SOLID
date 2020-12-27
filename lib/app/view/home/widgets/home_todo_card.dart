@@ -4,6 +4,7 @@ import 'package:todo/app/models/user_model.dart';
 import 'package:todo/app/providers/tasks_provider.dart';
 import 'package:todo/app/utils/color_helper.dart';
 import 'package:todo/common/common_loader.dart';
+import 'package:todo/common/common_popup_dialog.dart';
 
 Widget todoCard({
   @required TaskModel task,
@@ -53,9 +54,19 @@ Widget todoCard({
                     taskID: task.documentReference,
                     isDone: task.isDone,
                   )
-                      .then((_) {
+                      .then((_) async {
                     taskProvider.finished(id: id);
+                    await taskProvider.fetchTasks();
                     Navigator.of(context).pop();
+                    if (task.isDone) {
+                      showCommonDialog(
+                        context: context,
+                        text:
+                            'Congratulations, task is successfully finished!!!',
+                        onButtonPressed: () => Navigator.of(context).pop(),
+                        image: 'assets/success.png',
+                      );
+                    }
                   });
                 }),
           ),
