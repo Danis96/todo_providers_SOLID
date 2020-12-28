@@ -64,6 +64,7 @@ Widget addNewTaskForm({
               selectedDate: taskProvider.dueDate,
               taskProvider: taskProvider,
               userModel: userModel,
+              ifSelectedNotPicked: selectedDate,
             ),
           ),
         ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/app/models/user_model.dart';
 import 'package:todo/app/providers/tasks_provider.dart';
 import 'package:todo/common/common_button.dart';
-import 'package:todo/app/utils/date_time_exensions.dart';
+import 'package:todo/app/utils/date_time_extensions.dart';
 import 'package:todo/common/common_loader.dart';
 import 'package:todo/common/common_popup_dialog.dart';
 import 'package:todo/routing/routes.dart';
@@ -13,6 +13,7 @@ Widget formButton({
   @required TextEditingController titleController,
   @required TextEditingController descriptionController,
   @required DateTime selectedDate,
+  @required DateTime ifSelectedNotPicked,
   @required TaskProvider taskProvider,
   @required UserModel userModel,
 }) {
@@ -26,7 +27,9 @@ Widget formButton({
         /// date
         await taskProvider
             .addNewTask(
-          date: selectedDate.dateToString(),
+          date: selectedDate != null
+              ? selectedDate.dateToString()
+              : ifSelectedNotPicked.dateToString(),
           title: titleController.text,
           description: descriptionController.text,
           userID: userModel.uid,

@@ -11,6 +11,7 @@ import 'package:todo/app/view/home/widgets/home_empty_state.dart';
 import 'package:todo/app/view/home/widgets/home_todo_card.dart';
 import 'package:todo/app/view/home/widgets/home_todo_section.dart';
 import 'package:todo/common/common_loader.dart';
+import 'package:todo/common/common_popup_dialog.dart';
 import 'package:todo/routing/routes.dart';
 
 class HomePage extends StatefulWidget {
@@ -87,12 +88,32 @@ class _HomePageState extends State<HomePage> {
                           color: ColorHelper.deleteRed.color,
                         ),
                       ),
-                      child: todoCard(
-                        task: task,
-                        taskProvider: taskProvider,
-                        user: userModel,
-                        context: context,
-                        id: i,
+                      child: GestureDetector(
+                        onTap: () => showDetailsDialog(
+                          context: context,
+                          onLeftButtonPressed: () {
+                            loaderDialog(context: context);
+                            taskProvider
+                                .deleteTask(
+                              taskID: task.documentReference,
+                            )
+                                .then((_) {
+                              Navigator.of(context).pop();
+                              _initializeHomeData()
+                                  .then((_) => Navigator.of(context).pop());
+                            });
+                          },
+                          onRightButtonPressed: null,
+                          image: '',
+                          model: task,
+                        ),
+                        child: todoCard(
+                          task: task,
+                          taskProvider: taskProvider,
+                          user: userModel,
+                          context: context,
+                          id: i,
+                        ),
                       ),
                     );
                   },
