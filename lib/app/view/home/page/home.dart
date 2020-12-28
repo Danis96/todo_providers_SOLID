@@ -4,12 +4,12 @@ import 'package:todo/app/models/task_model.dart';
 import 'package:todo/app/models/user_model.dart';
 import 'package:todo/app/providers/auth_provider.dart';
 import 'package:todo/app/providers/tasks_provider.dart';
+import 'package:todo/app/utils/color_helper.dart';
 import 'package:todo/app/view/home/widgets/home_app_bar.dart';
 import 'package:todo/app/view/home/widgets/home_buttons.dart';
 import 'package:todo/app/view/home/widgets/home_empty_state.dart';
 import 'package:todo/app/view/home/widgets/home_todo_card.dart';
 import 'package:todo/app/view/home/widgets/home_todo_section.dart';
-import 'package:todo/common/common_empty_container.dart';
 import 'package:todo/common/common_loader.dart';
 import 'package:todo/routing/routes.dart';
 
@@ -29,8 +29,12 @@ class _HomePageState extends State<HomePage> {
     Future<void>(() {
       loaderDialog(context: context);
     });
+    final UserModel userModel =
+        Provider.of<AuthProvider>(context, listen: false).userModel;
     Provider.of<TaskProvider>(context, listen: false)
-        .fetchTasks()
+        .fetchTasks(
+          userID: userModel.uid,
+        )
         .then((_) => Navigator.of(context).pop());
   }
 
@@ -55,34 +59,48 @@ class _HomePageState extends State<HomePage> {
       ),
       body: WillPopScope(
         onWillPop: () => null,
-        child: ListView(
-          children: <Widget>[
-            thingsToDoSection(
+        child: RefreshIndicator(
+          onRefresh: () => _initializeHomeData(),
+          child: ListView(
+            children: <Widget>[
+              thingsToDoSection(
                 numberOfThingsTodo:
-                    tasks.length - taskProvider.finishedTasks.length),
-            if (tasks != null || tasks.isNotEmpty)
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: tasks.length,
-                itemBuilder: (BuildContext context, int i) {
-                  final TaskModel task = tasks[i];
-                  if (task.userID == userModel.uid) {
-                    return todoCard(
-                      task: task,
-                      taskProvider: taskProvider,
-                      user: userModel,
-                      context: context,
-                      id: i,
+                    tasks.length - taskProvider.finishedTasks.length,
+              ),
+              if (tasks != null || tasks.isNotEmpty)
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: tasks.length,
+                  itemBuilder: (BuildContext context, int i) {
+                    final TaskModel task = tasks[i];
+                    return Dismissible(
+                      key: Key(task.documentReference.toString()),
+                      onDismissed: (DismissDirection direction) {
+                        tasks.removeAt(i);
+                        taskProvider.deleteTask(taskID: task.documentReference);
+                      },
+                      background: Container(
+                        margin: const EdgeInsets.only(left: 200.0),
+                        child: Icon(
+                          Icons.delete,
+                          color: ColorHelper.deleteRed.color,
+                        ),
+                      ),
+                      child: todoCard(
+                        task: task,
+                        taskProvider: taskProvider,
+                        user: userModel,
+                        context: context,
+                        id: i,
+                      ),
                     );
-                  } else {
-                    return commonEmptyContainer();
-                  }
-                },
-              )
-            else
-              emptyStateForTasks(),
-          ],
+                  },
+                )
+              else
+                emptyStateForTasks(),
+            ],
+          ),
         ),
       ),
     );

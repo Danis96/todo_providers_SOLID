@@ -9,6 +9,7 @@ enum ColorHelper {
   todoWhite,
   todoGrey,
   todoGreenChecked,
+  deleteRed,
 }
 
 extension ColorExtension on ColorHelper {
@@ -26,6 +27,8 @@ extension ColorExtension on ColorHelper {
         return const Color.fromRGBO(232, 232, 232, 1);
       case ColorHelper.todoGreenChecked:
         return const Color.fromRGBO(30, 130, 76, 1);
+      case ColorHelper.deleteRed:
+        return Colors.red;
     }
     return Colors.white;
   }

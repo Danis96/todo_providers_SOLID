@@ -12,11 +12,15 @@ class TaskProvider extends ChangeNotifier {
   List<TaskModel> get taskModels => _taskModels;
   List<TaskModel> _finishedTasks = <TaskModel>[];
   List<TaskModel> get finishedTasks => _finishedTasks;
+  List<TaskModel> _usersTasks = <TaskModel>[];
+  List<TaskModel> get usersTasks => _usersTasks;
 
   String _finishTaskError;
   String get finishTaskError => _finishTaskError;
   String _addTaskError;
   String get addTaskError => _addTaskError;
+  String _deleteTaskError;
+  String get deleteTaskError => _deleteTaskError;
 
   DateTime dueDate;
 
@@ -27,17 +31,19 @@ class TaskProvider extends ChangeNotifier {
   }
 
   /// fetch all tasks
-  Future<void> fetchTasks() async {
+  Future<void> fetchTasks({@required String userID}) async {
     try {
       _taskModels = <TaskModel>[];
       _finishedTasks = <TaskModel>[];
-
       await firestore.get().then((QuerySnapshot value) {
         // ignore: avoid_function_literals_in_foreach_calls
         value.docs.forEach((QueryDocumentSnapshot snap) {
-          _taskModels.add(TaskModel.fromDocument(snap.data()));
-          if (snap.data()['is_done'] == true) {
-            _finishedTasks.add(TaskModel.fromDocument(snap.data()));
+          if (snap.data()['user_id'] == userID) {
+            _usersTasks.add(TaskModel.fromDocument(snap.data()));
+            _taskModels.add(TaskModel.fromDocument(snap.data()));
+            if (snap.data()['is_done'] == true) {
+              _finishedTasks.add(TaskModel.fromDocument(snap.data()));
+            }
           }
         });
       });
@@ -106,6 +112,17 @@ class TaskProvider extends ChangeNotifier {
       print(e);
       final List<String> errors = e.toString().split(']');
       _addTaskError = errors[1];
+    }
+  }
+
+  Future<void> deleteTask({String taskID}) async {
+    try {
+      await firestore.doc(taskID).delete();
+      notifyListeners();
+    } catch (e) {
+      print(e);
+      final List<String> errors = e.toString().split(']');
+      _deleteTaskError = errors[1];
     }
   }
 

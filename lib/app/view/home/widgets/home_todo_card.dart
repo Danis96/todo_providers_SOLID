@@ -12,6 +12,7 @@ Widget todoCard({
   @required UserModel user,
   @required BuildContext context,
   @required int id,
+  bool isClickable = true,
 }) {
   bool taskDone = task.isDone ?? false;
 
@@ -45,38 +46,40 @@ Widget todoCard({
                       ),
                 iconSize: 30.0,
                 onPressed: () {
-                  loaderDialog(context: context);
-                  taskProvider
-                      .finishTask(
-                    title: task.title,
-                    date: task.dueDate,
-                    userID: user.uid,
-                    taskID: task.documentReference,
-                    isDone: task.isDone,
-                  )
-                      .then((_) async {
-                    taskProvider.finished(id: id);
-                    await taskProvider.fetchTasks();
-                    Navigator.of(context).pop();
-                    if (taskProvider.finishTaskError != null) {
-                      showCommonDialog(
-                        context: context,
-                        text: taskProvider.finishTaskError,
-                        onButtonPressed: () => Navigator.of(context).pop(),
-                        image: 'assets/error.png',
-                      );
-                    } else {
-                      if (task.isDone) {
+                  if (isClickable) {
+                    loaderDialog(context: context);
+                    taskProvider
+                        .finishTask(
+                      title: task.title,
+                      date: task.dueDate,
+                      userID: user.uid,
+                      taskID: task.documentReference,
+                      isDone: task.isDone,
+                    )
+                        .then((_) async {
+                      taskProvider.finished(id: id);
+                      await taskProvider.fetchTasks(userID: user.uid);
+                      Navigator.of(context).pop();
+                      if (taskProvider.finishTaskError != null) {
                         showCommonDialog(
                           context: context,
-                          text:
-                              'Congratulations, task is successfully finished!!!',
+                          text: taskProvider.finishTaskError,
                           onButtonPressed: () => Navigator.of(context).pop(),
-                          image: 'assets/success.png',
+                          image: 'assets/error.png',
                         );
+                      } else {
+                        if (task.isDone) {
+                          showCommonDialog(
+                            context: context,
+                            text:
+                                'Congratulations, task is successfully finished!!!',
+                            onButtonPressed: () => Navigator.of(context).pop(),
+                            image: 'assets/success.png',
+                          );
+                        }
                       }
-                    }
-                  });
+                    });
+                  }
                 }),
           ),
 
@@ -84,8 +87,10 @@ Widget todoCard({
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
+                width: 280,
                 child: Text(
                   task.title,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: ColorHelper.todoBlack.color,
                     fontWeight: FontWeight.w500,

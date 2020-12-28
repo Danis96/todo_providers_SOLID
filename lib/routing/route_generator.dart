@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/app/utils/navigation_animations.dart';
 import 'package:todo/app/view/add_task/page/add_task_page.dart';
+import 'package:todo/app/view/finished_tasks/page/finished_tasks_page.dart';
 import 'package:todo/app/view/home/page/home.dart';
 import 'package:todo/app/view/login/page/login_page.dart';
 import 'package:todo/app/view/registration/page/register_page.dart';
@@ -21,6 +22,8 @@ class RouteGenerator {
         return SlideAnimationTween(widget: HomePage());
       case AddNewTask:
         return SlideAnimationTween(widget: AddNewTaskPage());
+      case FinishedTasks:
+        return SlideAnimationTween(widget: FinishedTasksPage());
       default:
         return _errorRoute();
     }
