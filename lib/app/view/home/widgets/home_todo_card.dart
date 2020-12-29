@@ -3,6 +3,7 @@ import 'package:todo/app/models/task_model.dart';
 import 'package:todo/app/models/user_model.dart';
 import 'package:todo/app/providers/tasks_provider.dart';
 import 'package:todo/app/utils/color_helper.dart';
+import 'package:todo/app/utils/size_config.dart';
 import 'package:todo/common/common_loader.dart';
 import 'package:todo/common/common_popup_dialog.dart';
 
@@ -87,7 +88,7 @@ Widget todoCard({
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                width: 280,
+                width: SizeConfig.blockSizeHorizontal * 65,
                 child: Text(
                   task.title,
                   overflow: TextOverflow.ellipsis,

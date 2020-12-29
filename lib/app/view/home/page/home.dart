@@ -5,6 +5,7 @@ import 'package:todo/app/models/user_model.dart';
 import 'package:todo/app/providers/auth_provider.dart';
 import 'package:todo/app/providers/tasks_provider.dart';
 import 'package:todo/app/utils/color_helper.dart';
+import 'package:todo/app/utils/size_config.dart';
 import 'package:todo/app/view/home/widgets/home_app_bar.dart';
 import 'package:todo/app/view/home/widgets/home_buttons.dart';
 import 'package:todo/app/view/home/widgets/home_empty_state.dart';
@@ -41,6 +42,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    SizeConfig().init(context);
+
     final AuthProvider authProvider =
         Provider.of<AuthProvider>(context, listen: false);
     final TaskProvider taskProvider =

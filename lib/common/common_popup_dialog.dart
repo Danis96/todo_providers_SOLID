@@ -3,6 +3,7 @@ import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 import 'package:todo/app/models/task_model.dart';
 import 'package:todo/app/utils/color_helper.dart';
 import 'package:todo/app/utils/boolean_extensions.dart';
+import 'package:todo/app/utils/size_config.dart';
 import 'package:todo/common/common_button.dart';
 import 'package:todo/common/common_empty_container.dart';
 
@@ -97,7 +98,7 @@ Widget detailsVisual({
   @required String image,
 }) {
   return Container(
-    height: 490,
+    height: SizeConfig.blockSizeVertical * 60,
     padding: const EdgeInsets.symmetric(horizontal: 24.0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -145,7 +146,7 @@ Widget detailsVisual({
         if (model.description.isNotEmpty)
           Container(
             margin: const EdgeInsets.only(top: 10.0),
-            height: 150,
+            height: SizeConfig.blockSizeVertical * 10,
             child: ListView(
               shrinkWrap: true,
               children: <Widget>[
@@ -166,8 +167,9 @@ Widget detailsVisual({
           margin: const EdgeInsets.only(top: 20.0),
           width: 230,
           decoration: BoxDecoration(
-              border: Border.all(color: ColorHelper.todoGrey.color),
-              borderRadius: BorderRadius.circular(12.0)),
+            border: Border.all(color: ColorHelper.todoGrey.color),
+            borderRadius: BorderRadius.circular(12.0),
+          ),
           child: ListTile(
             title: Text(
               'Task status: ',
@@ -187,8 +189,7 @@ Widget detailsVisual({
             children: <Widget>[
               Container(
                 child: FlatButton.icon(
-                  onPressed: () =>
-                      onLeftButtonPressed(),
+                  onPressed: () => onLeftButtonPressed(),
                   color: ColorHelper.todoWhite.color,
                   icon: Icon(
                     Icons.delete,
@@ -211,8 +212,6 @@ Widget detailsVisual({
             ],
           ),
         ),
-
-        /// buttons for delete and update
       ],
     ),
   );
