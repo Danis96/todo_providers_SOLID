@@ -30,6 +30,7 @@ dependencies:
   intl: ^0.16.1
   flutter_spinkit: ^4.1.2+1
   slide_popup_dialog: ^0.0.2
+  flutter_launcher_icons: ^0.8.1
 
 
 
@@ -40,6 +41,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/feather.png"
+  image_path_android: "assets/feather.png"
+  adaptive_icon_background: "assets/feather.png"
+  adaptive_icon_foreground: "assets/feather.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
